@@ -19,5 +19,12 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
+  },
+  "federation": {
+    "naver" : {
+      "clientId" : "58cYYnBqS2RpaFeuv68P",
+      "clientSecret" : "nYXsaYnTwu",
+      "callbackURL" : "http://127.0.0.1:3000"
+    }
   }
 }
