@@ -6,12 +6,12 @@ var NaverStrategy = require('passport-naver').Strategy;
 
 import config from '../config';
 
-//처리 후 callback 처리 부분 성공/실패 시 리다이렉트 설정
-router.get('/naver/callback', passport.authenticate('naver', {
-      successRedirect : '/',
-      failureRedirect : '/main/login'
-    })
-);
+// //처리 후 callback 처리 부분 성공/실패 시 리다이렉트 설정
+// router.get('/naver/callback', passport.authenticate('naver', {
+//       successRedirect : '/',
+//       failureRedirect : '/main/login'
+//     })
+// );
 
 //별도 config 파일에 '네아로'에 신청한 정보 입력
 passport.use(new NaverStrategy({
@@ -54,11 +54,12 @@ router.get('/', function(req, res, next) {
 });
 
 //naver 로그인
-router.get('/auth/login/naver',
+router.get('/login/naver',
     passport.authenticate('naver')
 );
+
 //naver 로그인 연동 콜백
-router.get('http://127.0.0.1:3000',
+router.get('/login/naver/callback',
     passport.authenticate('naver', {
       successRedirect: '/',
       failureRedirect: '/login'

@@ -50,7 +50,7 @@ var app = express();
 var client_id = '58cYYnBqS2RpaFeuv68P';
 var client_secret = 'nYXsaYnTwu';
 var state = "RAMDOM_STATE";
-var redirectURI = encodeURI("http://127.0.0.1:3000");
+var redirectURI = encodeURI("http://127.0.0.1:3000/callback");
 var api_url = "";
 app.get('/naverlogin', function (req, res) {
   api_url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirectURI + '&state=' + state;
@@ -58,7 +58,7 @@ app.get('/naverlogin', function (req, res) {
   res.end("<a href='"+ api_url + "'><img height='50' src='http://static.nid.naver.com/oauth/small_g_in.PNG'/></a>");
 });
 app.get('/callback', function (req, res) {
-  code = req.query.code;
+  var code = req.query.code;
   state = req.query.state;
   api_url = 'https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id='
       + client_id + '&client_secret=' + client_secret + '&redirect_uri=' + redirectURI + '&code=' + code + '&state=' + state;
